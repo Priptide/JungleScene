@@ -1,0 +1,311 @@
+# Blender MTL File: 'None'
+# Material Count: 26
+
+newmtl cct_leaf_A_mat
+Ns 70.223697
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\cct_leaf_A_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\klp_leaf_A_col.tga
+map_d C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\klp_leaf_A_opacity.tga
+
+newmtl cct_leaf_B_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\cct_leaf_B_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\klp_leaf_B_col.tga
+map_d C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\klp_leaf_B_opacity.tga
+
+newmtl cct_leaf_C_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\cct_leaf_C_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\klp_leaf_C_col.tga
+map_d C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\klp_leaf_C_opacity.tga
+
+newmtl cct_leaf_tua_A_mat
+Ns 70.223697
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\cct_leaf_tua_A_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\klp_leaf_tua_A_col.tga
+map_d C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\klp_leaf_tua_A_opacity.tga
+
+newmtl cct_leaf_tua_B_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\cct_leaf_tua_B_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\klp_leaf_tua_B_col.tga
+map_d C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\klp_leaf_tua_B_opacity.tga
+
+newmtl coconutShade_010
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.139700 0.139700 0.139700
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\fruit_kmbl_tua_C_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\fruit_kmbl_tua_C_col.tga
+
+newmtl coconutShade_016
+Ns 70.223697
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\papah_nom_A_col.tga
+
+newmtl coconutShade_08
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.078200 0.078200 0.078200
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\fruit_kmbl_nom_D_col.tga
+
+newmtl coconutShade_09
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.145300 0.145300 0.145300
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\fruit_kmbl_tua_B_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\fruit_kmbl_tua_B_col.tga
+
+newmtl fruit_kmbl_nom_A_mat
+Ns 15.046699
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.188000 0.188000 0.188000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\fruit_kmbl_nom_A_col.tga
+refl C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\Map__1_Reflect_Refract.tga
+
+newmtl fruit_kmbl_nom_B_mat
+Ns 31.211599
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.136800 0.136800 0.136800
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\fruit_kmbl_nom_B_col.tga
+
+newmtl fruit_kmbl_nom_C_mat
+Ns 24.196508
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.170900 0.170900 0.170900
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\fruit_kmbl_nom_C_col.tga
+
+newmtl fruit_kmbl_tua_A_mat
+Ns 29.751299
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.136800 0.136800 0.136800
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\fruit_kmbl_tua_A_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\fruit_kmbl_tua_A_col.tga
+
+newmtl kmbl_stalk_nom_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.128200 0.128200 0.128200
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\stalk_nom_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\kmbl_tangkai_nom_col.tga
+
+newmtl kmbl_stalk_tua_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.128200 0.128200 0.128200
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\stalk_tua_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\kmbl_tangkai_tua_col.tga
+
+newmtl papah_nom_A_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\papah_nom_A_col.tga
+
+newmtl papah_nom_B_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\papah_nom_B_col.tga
+
+newmtl papah_tua_A_mat
+Ns 70.223697
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\papah_tua_A_col.tga
+
+newmtl papah_tua_B_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\papah_tua_B_col.tga
+
+newmtl root_A_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.061400 0.061400 0.061400
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\root_A_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\root_A_color.tga
+
+newmtl root_B_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.061400 0.061400 0.061400
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\root_B_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\root_B_color.tga
+
+newmtl root_C_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.022300 0.022300 0.022300
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\root_C_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\root_C_color.tga
+
+newmtl trunk_A_mat
+Ns 70.223697
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\trunk_A_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\batang_A_col.tga
+
+newmtl trunk_B_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\trunk_B_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\batang_B_col.tga
+
+newmtl trunk_C_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\trunk_C_normal_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\batang_C_col.tga
+
+newmtl trunk_D_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Bump -bm 1.200000 C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\trunk_D_nor_Normal_Bump.tga
+map_Kd C:\\Users\\charl\\Downloads\\CoconutTress_OBJ\\batang_D_col.tga

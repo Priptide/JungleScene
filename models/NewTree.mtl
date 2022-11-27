@@ -1,0 +1,280 @@
+# Blender 3.3.1 MTL File: 'None'
+# www.blender.org
+
+newmtl cct_leaf_A_mat
+Ns 70.223694
+Ka 1.000000 1.000000 1.000000
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd CoconutTress/klp_leaf_A_col.tga
+map_d CoconutTress/klp_leaf_A_opacity.tga
+map_Bump -bm 1.200000 CoconutTress/cct_leaf_A_nor_Normal_Bump.tga
+
+newmtl cct_leaf_B_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd CoconutTress/klp_leaf_B_col.tga
+map_d CoconutTress/klp_leaf_B_opacity.tga
+map_Bump -bm 1.200000 CoconutTress/cct_leaf_B_nor_Normal_Bump.tga
+
+newmtl cct_leaf_C_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd CoconutTress/klp_leaf_C_col.tga
+map_d CoconutTress/klp_leaf_C_opacity.tga
+map_Bump -bm 1.200000 CoconutTress/cct_leaf_C_nor_Normal_Bump.tga
+
+newmtl cct_leaf_tua_A_mat
+Ns 70.223694
+Ka 1.000000 1.000000 1.000000
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd CoconutTress/klp_leaf_tua_A_col.tga
+map_d CoconutTress/klp_leaf_tua_A_opacity.tga
+map_Bump -bm 1.200000 CoconutTress/cct_leaf_tua_A_nor_Normal_Bump.tga
+
+newmtl cct_leaf_tua_B_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd CoconutTress/klp_leaf_tua_B_col.tga
+map_d CoconutTress/klp_leaf_tua_B_opacity.tga
+map_Bump -bm 1.200000 CoconutTress/cct_leaf_tua_B_nor_Normal_Bump.tga
+
+newmtl coconutShade_010
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.139700 0.139700 0.139700
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/fruit_kmbl_tua_C_col.tga
+map_Bump -bm 1.200000 CoconutTress/fruit_kmbl_tua_C_nor_Normal_Bump.tga
+
+newmtl coconutShade_016
+Ns 70.223694
+Ka 1.000000 1.000000 1.000000
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/papah_nom_A_col.tga
+
+newmtl coconutShade_08
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.078200 0.078200 0.078200
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/fruit_kmbl_nom_D_col.tga
+
+newmtl coconutShade_09
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.145300 0.145300 0.145300
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/fruit_kmbl_tua_B_col.tga
+map_Bump -bm 1.200000 CoconutTress/fruit_kmbl_tua_B_nor_Normal_Bump.tga
+
+newmtl fruit_kmbl_nom_A_mat
+Ns 15.046699
+Ka 1.000000 1.000000 1.000000
+Ks 0.188000 0.188000 0.188000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/fruit_kmbl_nom_A_col.tga
+map_refl CoconutTress/Map__1_Reflect_Refract.tga
+
+newmtl fruit_kmbl_nom_B_mat
+Ns 31.211599
+Ka 1.000000 1.000000 1.000000
+Ks 0.136800 0.136800 0.136800
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/fruit_kmbl_nom_B_col.tga
+
+newmtl fruit_kmbl_nom_C_mat
+Ns 24.196507
+Ka 1.000000 1.000000 1.000000
+Ks 0.170900 0.170900 0.170900
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/fruit_kmbl_nom_C_col.tga
+
+newmtl fruit_kmbl_tua_A_mat
+Ns 29.751301
+Ka 1.000000 1.000000 1.000000
+Ks 0.136800 0.136800 0.136800
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/fruit_kmbl_tua_A_col.tga
+map_Bump -bm 1.200000 CoconutTress/fruit_kmbl_tua_A_nor_Normal_Bump.tga
+
+newmtl kmbl_stalk_nom_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.128200 0.128200 0.128200
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/kmbl_tangkai_nom_col.tga
+map_Bump -bm 1.200000 CoconutTress/stalk_nom_nor_Normal_Bump.tga
+
+newmtl kmbl_stalk_tua_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.128200 0.128200 0.128200
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/kmbl_tangkai_tua_col.tga
+map_Bump -bm 1.200000 CoconutTress/stalk_tua_nor_Normal_Bump.tga
+
+newmtl papah_nom_A_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/papah_nom_A_col.tga
+
+newmtl papah_nom_B_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/papah_nom_B_col.tga
+
+newmtl papah_tua_A_mat
+Ns 70.223694
+Ka 1.000000 1.000000 1.000000
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/papah_tua_A_col.tga
+
+newmtl papah_tua_B_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/papah_tua_B_col.tga
+
+newmtl root_A_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.061400 0.061400 0.061400
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/root_A_color.tga
+map_Bump -bm 1.200000 CoconutTress/root_A_nor_Normal_Bump.tga
+
+newmtl root_B_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.061400 0.061400 0.061400
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/root_B_color.tga
+map_Bump -bm 1.200000 CoconutTress/root_B_nor_Normal_Bump.tga
+
+newmtl root_C_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.022300 0.022300 0.022300
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CoconutTress/root_C_color.tga
+map_Bump -bm 1.200000 CoconutTress/root_C_nor_Normal_Bump.tga
+
+newmtl trunk_A_mat
+Ns 70.223694
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd CoconutTress/batang_A_col.tga
+map_Bump -bm 1.200000 CoconutTress/trunk_A_nor_Normal_Bump.tga
+
+newmtl trunk_B_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd CoconutTress/batang_B_col.tga
+map_Bump -bm 1.200000 CoconutTress/trunk_B_nor_Normal_Bump.tga
+
+newmtl trunk_C_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd CoconutTress/batang_C_col.tga
+map_Bump -bm 1.200000 CoconutTress/trunk_C_normal_Normal_Bump.tga
+
+newmtl trunk_D_mat
+Ns 43.219307
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd CoconutTress/batang_D_col.tga
+map_Bump -bm 1.200000 CoconutTress/trunk_D_nor_Normal_Bump.tga

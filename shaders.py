@@ -234,9 +234,8 @@ class PhongShader(BaseShaderProgram):
             'Id': Uniform('Id'),
             'Is': Uniform('Is'),
             'has_texture': Uniform('has_texture'),
-            'textureObject': Uniform('textureObject')
-            #'textureObject2': Uniform('textureObject2'),
-
+            'textureObject': Uniform('textureObject'),
+            'flatObject': Uniform('flatObject')
         }
 
     def bind(self, model, M):
@@ -270,6 +269,9 @@ class PhongShader(BaseShaderProgram):
             self.uniforms['has_texture'].bind(1)
         else:
             self.uniforms['has_texture'].bind(0)
+
+        # if(model.mesh.isTerrain):
+        #     self.uniforms["flatObject"].bind(0)
 
         # bind material properties
         self.bind_material_uniforms(model.mesh.material)
@@ -316,4 +318,8 @@ class BlinnShader(PhongShader):
 class TextureShader(PhongShader):
     def __init__(self):
         PhongShader.__init__(self, name='texture')
+
+class TerrainShader(PhongShader):
+    def __init__(self):
+        PhongShader.__init__(self, name='terrain')
 

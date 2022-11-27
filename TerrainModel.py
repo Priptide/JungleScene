@@ -1,9 +1,8 @@
+from math import sqrt
 from random import random
-from BaseModel import BaseModel
 import numpy as np
 # imports all openGL functions
 from OpenGL.GL import *
-from heightMapGenerator import generate
 from material import Material
 from matutils import *
 from perlin_noise import PerlinNoise
@@ -16,25 +15,26 @@ class Terrain(Mesh):
     A model for drawing base terrain.
     '''
     def __init__(self, width, height, material=Material(Ka=[0.5,0.5,0.5], Kd=[0.6,0.6,0.9], Ks=[1.,1.,0.9], Ns=15.0)):
-        noise1 = PerlinNoise(octaves=3)
-        noise2 = PerlinNoise(octaves=6)
-        noise3 = PerlinNoise(octaves=12)
-        noise4 = PerlinNoise(octaves=24)
         n = width*height
         vertices = np.zeros((n, 3), 'f')
         vertex_colors = np.zeros((n, 3), 'f')
         textureCoords = np.zeros((n, 2), 'f')
-        roughness = 8
+        slope = 5
+        flat = 20
+        water = 5
+        water_depth = -10
         for i in range(height):
             for j in range(width):
                 v = (i*height)+j
-                noise_val = noise1([i/height, j/width])
-                noise_val += 0.5 * noise2([i/height, j/width])
-                noise_val += 0.25 * noise3([i/height, j/width])
-                noise_val += 0.125 * noise4([i/height, j/width])
-                # -(noise_val * roughness)
                 vertices[v, 0] = j*10
-                vertices[v, 1] = (noise_val * roughness)*10
+                #Calculate distance from centre using pythag
+                dist = sqrt(pow((width/2-j),2) + pow((height/2-i),2))
+                if(dist > flat):
+                    vertices[v, 1] = (dist-flat) * slope
+                elif(dist < water):
+                    vertices[v, 1] = water_depth
+                else:
+                    vertices[v, 1] = 0
                 # vertices[v, 1] = 0
                 vertices[v, 2] = i*10
                 vertex_colors[v, 0] = float(i) / float(width)
@@ -44,7 +44,7 @@ class Terrain(Mesh):
         
         
 
-        nfaces = (height*width) + (width-1)*(height-2)
+        nfaces = 2*(width-1)*(height-1)
         indices = np.zeros((nfaces, 3), dtype=np.uint32)
         k = 0
 
@@ -86,11 +86,11 @@ class Terrain(Mesh):
         #             indices.append(j+(i+1)*width)
         #             indices.append((j-1)+i*width)
                     
-
+        # print(indices)
         # if(height%2==1 and height > 2):
         #     indices.append((height-1)*width)
         # indices = np.array(indices, dtype=np.uint32)
-        np.savetxt("./test.txt", vertices, '%f')
+        # np.savetxt("./test.txt", indices, '%f')
         Mesh.__init__(self,
                       vertices=vertices,
                       faces=indices,
@@ -98,7 +98,7 @@ class Terrain(Mesh):
                       material=material
                       )
 
-        self.textures.append(Texture('forest_floor.png'))
+        self.textures.append(Texture('StyleGrass.jpg'))
 
     # def draw(self, Mp):
     #     '''

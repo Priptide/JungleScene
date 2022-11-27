@@ -26,6 +26,7 @@ class Mesh:
         self.textures = []
         self.tangents = None
         self.binormals = None
+        self.isTerrain = False
 
         if vertices is not None:
             print('Creating mesh')

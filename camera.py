@@ -18,14 +18,12 @@ class Camera:
     '''
 
 
-    def __init__(self, size, terrain_width, terrain_height):
-        self.size = size
+    def __init__(self, size):
         self.V = np.identity(4)
-        self.V[2,3] = 10.0
         self.phi = 0.
-        self.psi = 90.
-        self.distance = 90
-        self.center = [-(terrain_width/2) * 10,0,-(terrain_width/2) * 10]
+        self.psi = 270.
+        self.distance = -200.
+        self.center = [0.,0.,0.]
         self.update()
 
     def update(self):
@@ -36,6 +34,6 @@ class Camera:
         R = np.matmul(rotationMatrixX(self.psi), rotationMatrixY(self.phi))
 
         # we move the camera away from the origin, looking back.
-        T = translationMatrix([0., 0., -self.distance])
+        T = translationMatrix([0., 0., self.distance])
         # # note the order of the matrices. It is important!
         self.V = np.matmul(np.matmul(T, R), D)

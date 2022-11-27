@@ -18,7 +18,7 @@ class Scene:
     '''
     This is the main class for adrawing an OpenGL scene using the PyGame library
     '''
-    def __init__(self, terrain_width, terrain_height, width=800, height=600, shaders=None,):
+    def __init__(self, width=800, height=600):
         '''
         Initialises the scene
         '''
@@ -40,7 +40,7 @@ class Scene:
         glClearColor(0.7, 0.7, 1.0, 1.0)
 
         # enable back face culling (see lecture on clipping and visibility
-        glEnable(GL_CULL_FACE)
+        # glEnable(GL_CULL_FACE)
         # depending on your model, or your projection matrix, the winding order may be inverted,
         # Typically, you see the far side of the model instead of the front one
         # uncommenting the following line should provide an easy fix.
@@ -48,6 +48,9 @@ class Scene:
 
         # enable the vertex array capability
         glEnableClientState(GL_VERTEX_ARRAY)
+
+        glEnable( GL_BLEND )
+        glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA )
 
         # enable depth test for clean output (see lecture on clipping & visibility for an explanation
         glEnable(GL_DEPTH_TEST)
@@ -66,7 +69,7 @@ class Scene:
         self.P = frustumMatrix(left,right,top,bottom,near,far)
 
         # initialises the camera object
-        self.camera = Camera(self.window_size, terrain_width=terrain_width, terrain_height=terrain_height)
+        self.camera = Camera(self.window_size)
 
         self.light = LightSource(self, position=[5., 5., 5.])
 
@@ -118,16 +121,16 @@ class Scene:
         if event.key == pygame.K_q:
             self.running = False
         elif event.key == pygame.K_a:
-            self.camera.center[0] += 1
-            print(self.camera.V)
-        elif event.key == pygame.K_d:
             self.camera.center[0] -= 1
             print(self.camera.V)
+        elif event.key == pygame.K_d:
+            self.camera.center[0] += 1
+            print(self.camera.V)
         elif event.key == pygame.K_w:
-            self.camera.center[1] += 1
+            self.camera.center[1] -= 1
             print(self.camera.V)
         elif event.key == pygame.K_s:
-            self.camera.center[1] -= 1
+            self.camera.center[1] += 1
             print(self.camera.V)
         # flag to switch wireframe rendering
         elif event.key == pygame.K_0:
@@ -182,16 +185,16 @@ class Scene:
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 4:
-                    self.camera.distance = max(1, self.camera.distance - 1)
+                    self.camera.distance += 10
                 elif event.button == 5:
-                    self.camera.distance += 1
+                    self.camera.distance -= 10
 
             elif event.type == pygame.MOUSEMOTION:
                 if pygame.mouse.get_pressed()[0]:
                     if self.mouse_mvt is not None:
                         self.mouse_mvt = pygame.mouse.get_rel()
-                        self.camera.center[0] -= (float(self.mouse_mvt[0]) / self.window_size[0])
-                        self.camera.center[1] -= (float(self.mouse_mvt[1]) / self.window_size[1])
+                        self.camera.center[0] -= (float(self.mouse_mvt[0]) / self.window_size[0]) * 30
+                        self.camera.center[1] += (float(self.mouse_mvt[1]) / self.window_size[1]) * 30
                     else:
                         self.mouse_mvt = pygame.mouse.get_rel()
 
