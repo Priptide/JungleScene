@@ -49,8 +49,8 @@ class Scene:
         # enable the vertex array capability
         glEnableClientState(GL_VERTEX_ARRAY)
 
-        glEnable( GL_BLEND )
-        glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA )
+        # glEnable( GL_BLEND )
+        # glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA )
 
         # enable depth test for clean output (see lecture on clipping & visibility for an explanation
         glEnable(GL_DEPTH_TEST)

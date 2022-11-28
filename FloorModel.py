@@ -21,8 +21,8 @@ class Floor(Mesh):
         textureCoords = np.zeros((n, 2), 'f')
         slope = 5
         flat = 20
-        water = 5
-        water_depth = -10
+        water = 8
+        water_depth = -60
         for i in range(height):
             for j in range(width):
                 v = (i*height)+j
@@ -73,4 +73,4 @@ class Floor(Mesh):
                       material=material
                       )
 
-        self.textures.append(Texture('StoneFloor.jpg'))
+        self.textures.append(Texture('StyleGrass.jpg'))

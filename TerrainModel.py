@@ -19,10 +19,10 @@ class Terrain(Mesh):
         vertices = np.zeros((n, 3), 'f')
         vertex_colors = np.zeros((n, 3), 'f')
         textureCoords = np.zeros((n, 2), 'f')
-        slope = 5
+        slope = -5
         flat = 20
-        water = 5
-        water_depth = -10
+        water = 8
+        water_depth = -60
         for i in range(height):
             for j in range(width):
                 v = (i*height)+j
