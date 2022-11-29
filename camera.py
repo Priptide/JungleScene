@@ -21,7 +21,7 @@ class Camera:
     def __init__(self, size):
         self.V = np.identity(4)
         self.phi = 0.
-        self.psi = 270.
+        self.psi = 276
         self.distance = -200.
         self.center = [0.,0.,0.]
         self.update()

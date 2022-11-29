@@ -16,6 +16,7 @@ class Water(Mesh):
     '''
     def __init__(self, width, height, material=Material(Ka=[0.5,0.5,0.5], Kd=[0.6,0.6,0.9], Ks=[1.,1.,0.9], Ns=15.0), textures=None):
         n = width*height
+        self.speed = 0
         vertices = np.zeros((n, 3), 'f')
         vertex_colors = np.zeros((n, 3), 'f')
         textureCoords = np.zeros((n, 2), 'f')
@@ -68,4 +69,3 @@ class Water(Mesh):
             self.textures.append(Texture('Water.jpg'))
         else:
             self.textures = textures
-                      

@@ -55,8 +55,6 @@ class Scene:
         # enable depth test for clean output (see lecture on clipping & visibility for an explanation
         glEnable(GL_DEPTH_TEST)
 
-        self.shaders = 'flat'
-
         # initialise the projective transform
         near=1.5
         far=5000

@@ -1,37 +1,34 @@
 from math import sqrt
-from random import random
 import numpy as np
 # imports all openGL functions
 from OpenGL.GL import *
 from material import Material
 from matutils import *
-from perlin_noise import PerlinNoise
 
 from mesh import Mesh
 from texture import Texture
 
-class Floor(Mesh):
+class Cover(Mesh):
     '''
     A model for drawing base terrain.
     '''
-    def __init__(self, width, height, material=Material(Ka=[0.5,0.5,0.5], Kd=[0.6,0.6,0.9], Ks=[1.,1.,0.9], Ns=15.0), textures=None):
+    def __init__(self, width, height, material=Material(Ka=[0.5,0.5,0.5], Kd=[0.6,0.6,0.9], Ks=[1.,1.,0.9], Ns=15.0)):
         n = width*height
         vertices = np.zeros((n, 3), 'f')
         vertex_colors = np.zeros((n, 3), 'f')
         textureCoords = np.zeros((n, 2), 'f')
-        slope = 5
-        flat = 20
-        water = 8
-        water_depth = -60
+        slope = 7
+        flat = 10
+        max_depth = -70
         for i in range(height):
             for j in range(width):
                 v = (i*height)+j
                 vertices[v, 0] = j*10
                 dist = sqrt(pow((width/2-j),2) + pow((height/2-i),2))
-                if(dist < water):
-                    vertices[v, 1] = water_depth
+                if(dist < flat):
+                    vertices[v, 1] = max_depth
                 else:
-                    vertices[v, 1] = 0
+                    vertices[v, 1] = min(0, max_depth +((dist-flat)*slope))
                 vertices[v, 2] = i*10
                 vertex_colors[v, 0] = float(i) / float(width)
                 vertex_colors[v, 1] = float(j) / float(height)
@@ -73,7 +70,4 @@ class Floor(Mesh):
                       material=material
                       )
 
-        if textures is None or len(textures) == 0:
-            self.textures.append(Texture('StyleGrass.jpg'))
-        else:
-            self.textures = textures
+        self.textures.append(Texture('StoneFloor.jpg'))

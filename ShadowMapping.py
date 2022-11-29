@@ -50,7 +50,7 @@ class ShadowMappingShader(PhongShader):
         self.add_uniform('shadow_map_matrix')
         self.shadow_map = shadow_map
 
-    def bind(self, model, M):
+    def bind(self, model, M, plane=np.array([0, -1, 0, 10000])):
         PhongShader.bind(self, model, M)
         self.uniforms['shadow_map'].bind(1)
         #self.uniforms['old_map'].bind(2)

@@ -1,4 +1,5 @@
 # imports all openGL functions
+import time
 from OpenGL.GL import *
 from OpenGL.GL import shaders
 from matutils import *
@@ -240,6 +241,9 @@ class PhongShader(BaseShaderProgram):
             'has_texture': Uniform('has_texture'),
             'textureObject': Uniform('textureObject'),
             'secondaryTexture': Uniform('secondaryTexture'),
+            'map': Uniform('map'),
+            'movement': Uniform('movement'),
+            'scale': Uniform('scale'),
             'plane': Uniform('plane', np.array([0, -1, 0, 10000], 'f')),
         }
 
@@ -266,6 +270,8 @@ class PhongShader(BaseShaderProgram):
         # bind the mode to the program
         self.uniforms['mode'].bind(model.scene.mode)
 
+        # self.uniforms['scale'].bind(1)
+
         self.uniforms['alpha'].bind(model.mesh.material.alpha)
 
         self.uniforms['plane'].bind_vector(plane)
@@ -275,6 +281,7 @@ class PhongShader(BaseShaderProgram):
             self.uniforms['textureObject'].bind(0)
             self.uniforms['has_texture'].bind(1)
         elif len(model.mesh.textures) > 1:
+            self.uniforms['map'].bind(2)
             self.uniforms['secondaryTexture'].bind(1)
             self.uniforms['textureObject'].bind(0)
             self.uniforms['has_texture'].bind(1)
@@ -331,6 +338,14 @@ class TextureShader(PhongShader):
     def __init__(self):
         PhongShader.__init__(self, name='texture')
 
+class TerrainShader(PhongShader):
+    def __init__(self, scale=1):
+        PhongShader.__init__(self, name='terrain')
+        self.uniforms['scale'].bind(scale)
+    
+    def set_scale(self, scale=1):
+        self.uniforms['scale'].bind(scale)
+
 class ParticleShader(PhongShader):
     def __init__(self):
         PhongShader.__init__(self, name='particle')
@@ -338,3 +353,11 @@ class ParticleShader(PhongShader):
 class WaterShader(PhongShader):
     def __init__(self):
         PhongShader.__init__(self, name='water')
+        self.uniforms['movement'].bind(0)
+        self.speed = 0
+        self.time = time.time()
+    
+    def update(self, speed=0.05):
+        self.speed += (speed*(time.time()-self.time)) % 1
+        self.uniforms['movement'].bind(self.speed)
+        self.time = time.time()

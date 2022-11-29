@@ -1,8 +1,11 @@
 import numpy as np
 
-def scaleMatrix(s):
-    s.append(1)
-    return np.diag(s)
+def scaleMatrix(scale):
+    if np.isscalar(scale):
+        scale = [scale, scale, scale]
+
+    scale.append(1)
+    return np.diag(scale)
 
 def translationMatrix(t):
     n = len(t)
