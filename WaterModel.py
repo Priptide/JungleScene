@@ -64,5 +64,7 @@ class Water(Mesh):
                       textureCoords=textureCoords,
                       material=material
                       )
+        
+        self.textures.append(Texture('Water.jpg'))
 
                       

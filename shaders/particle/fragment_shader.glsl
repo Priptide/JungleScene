@@ -14,5 +14,5 @@ uniform mat3 VT;
 
 void main(void)
 {
-	final_color =  vec4(0.2706, 0.2784, 0.2784, 0.623);
+	final_color =  vec4(0.6745, 0.6784, 0.6784, 0.719);
 }

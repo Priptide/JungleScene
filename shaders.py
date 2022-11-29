@@ -278,6 +278,7 @@ class PhongShader(BaseShaderProgram):
         # bind material properties
         self.bind_material_uniforms(model.mesh.material)
 
+
         # bind the light properties
         self.bind_light_uniforms(model.scene.light, V)
 
@@ -324,3 +325,7 @@ class TextureShader(PhongShader):
 class ParticleShader(PhongShader):
     def __init__(self):
         PhongShader.__init__(self, name='particle')
+
+class WaterShader(PhongShader):
+    def __init__(self):
+        PhongShader.__init__(self, name='water')
