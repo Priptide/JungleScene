@@ -34,10 +34,6 @@ class Mesh:
             if faces is not None:
                 print('- {} faces'.format(self.faces.shape[0]))
 
-        #if faces is not None:
-        #    print('- {} vertices per face'.format(self.faces.shape[1]))
-            #print('- vertices ID in range [{},{}]'.format(np.min(self.faces.flatten()), np.max(self.faces.flatten())))
-
         if normals is None:
             if faces is None:
                 print('(W) Warning: the current code only calculates normals using the face vector of indices, which was not provided here.')
@@ -48,7 +44,6 @@ class Mesh:
 
         if material.texture is not None:
             self.textures.append(Texture(material.texture))
-            #self.textures.append(Texture('lena.bmp'))
 
 
     def calculate_normals(self):

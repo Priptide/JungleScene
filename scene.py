@@ -39,16 +39,10 @@ class Scene:
         # this selects the background color
         glClearColor(0.7, 0.7, 1.0, 1.0)
 
-        # enable back face culling (see lecture on clipping and visibility
-        # glEnable(GL_CULL_FACE)
-        # depending on your model, or your projection matrix, the winding order may be inverted,
-        # Typically, you see the far side of the model instead of the front one
-        # uncommenting the following line should provide an easy fix.
-        #glCullFace(GL_FRONT)
-
         # enable the vertex array capability
         glEnableClientState(GL_VERTEX_ARRAY)
 
+        #enable texture depth blending
         glEnable( GL_BLEND )
         glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA )
 
@@ -69,6 +63,7 @@ class Scene:
         # initialises the camera object
         self.camera = Camera(self.window_size)
 
+        #initalise a light source
         self.light = LightSource(self, position=[5., 5., 5.])
 
         self.mode = 1
@@ -102,6 +97,7 @@ class Scene:
         # first we need to clear the scene, we also clear the depth buffer to handle occlusions
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
+        #update camera position
         self.camera.update()
 
         # then we loop over all models in the list and draw them

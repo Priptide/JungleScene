@@ -25,9 +25,6 @@ class Camera:
         self.distance = -200.
         self.center = [0.,0.,0.]
         self.update()
-        self.x = (self.V[0][0] * self.V[0][3]) + (self.V[0][1] * self.V[1][3])+ (self.V[0][2] * self.V[2][3])
-        self.y = (self.V[1][0] * self.V[0][3]) + (self.V[1][1] * self.V[1][3])+ (self.V[1][2] * self.V[2][3])
-        self.z = (self.V[2][0] * self.V[2][3]) + (self.V[2][1] * self.V[2][3])+ (self.V[2][2] * self.V[2][3])
 
     def update(self):
         # we change the origin of the coordinate system
@@ -40,7 +37,3 @@ class Camera:
         T = translationMatrix([0., 0., self.distance])
         # # note the order of the matrices. It is important!
         self.V = np.matmul(np.matmul(T, R), D)
-
-        self.x = (self.V[0][0] * self.V[0][3]) + (self.V[0][1] * self.V[1][3])+ (self.V[0][2] * self.V[2][3])
-        self.y = (self.V[1][0] * self.V[0][3]) + (self.V[1][1] * self.V[1][3])+ (self.V[1][2] * self.V[2][3])
-        self.z = (self.V[2][0] * self.V[2][3]) + (self.V[2][1] * self.V[2][3])+ (self.V[2][2] * self.V[2][3])

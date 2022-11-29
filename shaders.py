@@ -243,7 +243,6 @@ class PhongShader(BaseShaderProgram):
             'secondaryTexture': Uniform('secondaryTexture'),
             'map': Uniform('map'),
             'movement': Uniform('movement'),
-            'scale': Uniform('scale'),
             'plane': Uniform('plane', np.array([0, -1, 0, 10000], 'f')),
         }
 
@@ -270,10 +269,9 @@ class PhongShader(BaseShaderProgram):
         # bind the mode to the program
         self.uniforms['mode'].bind(model.scene.mode)
 
-        # self.uniforms['scale'].bind(1)
-
         self.uniforms['alpha'].bind(model.mesh.material.alpha)
 
+        #Bind the clipping plane
         self.uniforms['plane'].bind_vector(plane)
 
         if len(model.mesh.textures) == 1:
@@ -281,15 +279,13 @@ class PhongShader(BaseShaderProgram):
             self.uniforms['textureObject'].bind(0)
             self.uniforms['has_texture'].bind(1)
         elif len(model.mesh.textures) > 1:
+            #if we have more than one texture then bind the map and texture
             self.uniforms['map'].bind(2)
             self.uniforms['secondaryTexture'].bind(1)
             self.uniforms['textureObject'].bind(0)
             self.uniforms['has_texture'].bind(1)
         else:
             self.uniforms['has_texture'].bind(0)
-
-        # if(model.mesh.isTerrain):
-        #     self.uniforms["flatObject"].bind(0)
 
         # bind material properties
         self.bind_material_uniforms(model.mesh.material)
@@ -323,28 +319,9 @@ class FlatShader(PhongShader):
     def __init__(self):
         PhongShader.__init__(self, name='flat')
 
-
-class GouraudShader(PhongShader):
-    def __init__(self):
-        PhongShader.__init__(self, name='gouraud')
-
-
-class BlinnShader(PhongShader):
-    def __init__(self):
-        PhongShader.__init__(self, name='blinn')
-
-
-class TextureShader(PhongShader):
-    def __init__(self):
-        PhongShader.__init__(self, name='texture')
-
 class TerrainShader(PhongShader):
-    def __init__(self, scale=1):
+    def __init__(self):
         PhongShader.__init__(self, name='terrain')
-        self.uniforms['scale'].bind(scale)
-    
-    def set_scale(self, scale=1):
-        self.uniforms['scale'].bind(scale)
 
 class ParticleShader(PhongShader):
     def __init__(self):
@@ -354,10 +331,13 @@ class WaterShader(PhongShader):
     def __init__(self):
         PhongShader.__init__(self, name='water')
         self.uniforms['movement'].bind(0)
+        #Save a speed and current time
         self.speed = 0
         self.time = time.time()
     
     def update(self, speed=0.05):
+        #Update the offset of the distortion on our water using the speed
+        #ensuring a max speed of one then reseting to zero
         self.speed += (speed*(time.time()-self.time)) % 1
         self.uniforms['movement'].bind(self.speed)
         self.time = time.time()

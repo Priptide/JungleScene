@@ -19,18 +19,11 @@ uniform int mode;	// the rendering mode (better to code different shaders!)
 const float tiles = 2.0;
 
 void main(){
-    // 1. first, we transform the position using PVM matrix.
-    // note that gl_Position is a standard output of the
-    // vertex shader.
-
+    
+    //Generate our position in clip space and asign to gl_position
     clip_space = PVM * vec4(position, 1.0);
-
     gl_Position = clip_space;
 
+    //Apply a tiling too our texture coordinates
     texture_Coord = texCoord * tiles;
-
-    // 2. calculate vectors used for shading calculations
-    // those will be interpolate before being sent to the
-    // fragment shader.
-    // TODO WS4
 }

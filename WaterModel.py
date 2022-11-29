@@ -5,21 +5,23 @@ import numpy as np
 from OpenGL.GL import *
 from material import Material
 from matutils import *
-from perlin_noise import PerlinNoise
 
 from mesh import Mesh
 from texture import Texture
 
 class Water(Mesh):
     '''
-    A model for drawing base terrain.
+    A model for a plane.
     '''
     def __init__(self, width, height, material=Material(Ka=[0.5,0.5,0.5], Kd=[0.6,0.6,0.9], Ks=[1.,1.,0.9], Ns=15.0), textures=None):
+
+        #Create vertice, vertex and texture arrays
         n = width*height
-        self.speed = 0
         vertices = np.zeros((n, 3), 'f')
         vertex_colors = np.zeros((n, 3), 'f')
         textureCoords = np.zeros((n, 2), 'f')
+
+        #Generate a flat plane
         for i in range(height):
             for j in range(width):
                 v = (i*height)+j
@@ -32,11 +34,12 @@ class Water(Mesh):
                 textureCoords[v, 0] = (float(j) / float(height))
         
         
-
+        #Create array for indices
         nfaces = 2*(width-1)*(height-1)
         indices = np.zeros((nfaces, 3), dtype=np.uint32)
         k = 0
 
+        #Map indices too array
         for i in range(height-1):
             if(i%2 == 0):
                 for j in range(width-1):
@@ -65,6 +68,8 @@ class Water(Mesh):
                       textureCoords=textureCoords,
                       material=material
                       )
+
+        #Save our current textures to an array if provided
         if textures is None or len(textures) == 0:
             self.textures.append(Texture('Water.jpg'))
         else:

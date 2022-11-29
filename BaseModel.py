@@ -46,15 +46,8 @@ class BaseModel:
         self.mesh = mesh
         if self.mesh.textures == 1:
             self.mesh.textures.append(Texture('lena.bmp'))
-
+        
         self.name = self.mesh.name
-        #self.vertices = None
-        #self.indices = None
-        #self.normals = None
-        #self.vertex_colors = None
-        #self.textureCoords = None
-        #self.textures = []
-
 
         # dict of VBOs
         self.vbos = {}
@@ -85,6 +78,7 @@ class BaseModel:
 
         # create a buffer object...
         self.vbos[name] = glGenBuffers(1)
+
         # and bind it
         glBindBuffer(GL_ARRAY_BUFFER, self.vbos[name])
 
@@ -166,8 +160,6 @@ class BaseModel:
                     plane=plane
             )
 
-            #print('---> object {} rendered using shader {}'.format(self.name, self.shader.name))
-
             # bind all textures. Note that your shader needs to handle each one with a sampler object.
             for unit, tex in enumerate(self.mesh.textures):
                 glActiveTexture(GL_TEXTURE0 + unit)
@@ -219,6 +211,7 @@ class DrawModelFromMesh(BaseModel):
             print('(E) Error in DrawModelFromObjFile.__init__(): index array must have 3 (triangles) or 4 (quads) columns, found {}!'.format(self.indices.shape[1]))
 
         self.bind()
-
+        
+        #bind shader values
         if shader is not None:
             self.bind_shader(shader)
