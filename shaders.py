@@ -235,10 +235,10 @@ class PhongShader(BaseShaderProgram):
             'Is': Uniform('Is'),
             'has_texture': Uniform('has_texture'),
             'textureObject': Uniform('textureObject'),
-            'flatObject': Uniform('flatObject')
+            'plane': Uniform('plane', np.array([0, -1, 0, 10000], 'f')),
         }
 
-    def bind(self, model, M):
+    def bind(self, model, M, plane=np.array([0, -1, 0, 10000], 'f')):
         '''
         Call this function to enable this GLSL Program (you can have multiple GLSL programs used during rendering!)
         '''
@@ -262,6 +262,8 @@ class PhongShader(BaseShaderProgram):
         self.uniforms['mode'].bind(model.scene.mode)
 
         self.uniforms['alpha'].bind(model.mesh.material.alpha)
+
+        self.uniforms['plane'].bind_vector(plane)
 
         if len(model.mesh.textures) > 0:
             # bind the texture(s)
@@ -319,7 +321,6 @@ class TextureShader(PhongShader):
     def __init__(self):
         PhongShader.__init__(self, name='texture')
 
-class TerrainShader(PhongShader):
+class ParticleShader(PhongShader):
     def __init__(self):
-        PhongShader.__init__(self, name='terrain')
-
+        PhongShader.__init__(self, name='particle')

@@ -3,7 +3,7 @@ from mesh import *
 
 from OpenGL.GL.framebufferobjects import *
 
-from cubeMap import CubeMap
+from cubeMap import CubeMap, PlaneMap
 
 from shaders import *
 
@@ -13,17 +13,18 @@ from framebuffer import Framebuffer
 class EnvironmentShader(BaseShaderProgram):
     def __init__(self, name='environment', map=None):
         BaseShaderProgram.__init__(self, name=name)
-        self.add_uniform('sampler_cube')
         self.add_uniform('VM')
         self.add_uniform('VMiT')
         self.add_uniform('VT')
-
+        self.add_uniform('plane')
         self.map = map
 
-    def bind(self, model, M):
+    def bind(self, model, M, plane=np.array([0, -1, 0, 10000], 'f')):
         if self.map is not None:
             #self.map.update(model.scene)
             unit = len(model.mesh.textures)
+            self.uniforms['textureObject'].bind(0)
+            self.uniforms['has_texture'].bind(1)
             glActiveTexture(GL_TEXTURE0)
             self.map.bind()
             # self.uniforms['sampler_cube'].bind(0)
@@ -45,7 +46,7 @@ class EnvironmentShader(BaseShaderProgram):
         self.uniforms['VT'].bind(V.transpose()[:3, :3])
 
 
-class EnvironmentMappingTexture(CubeMap):
+class EnvironmentMappingTexture(PlaneMap):
     def __init__(self, width=200, height=200):
         CubeMap.__init__(self)
 
@@ -54,29 +55,17 @@ class EnvironmentMappingTexture(CubeMap):
         self.width = width
         self.height = height
 
-        self.fbos = {
-            GL_TEXTURE_CUBE_MAP_NEGATIVE_X: Framebuffer(),
-            GL_TEXTURE_CUBE_MAP_POSITIVE_X: Framebuffer(),
-            GL_TEXTURE_CUBE_MAP_NEGATIVE_Y: Framebuffer(),
-            GL_TEXTURE_CUBE_MAP_POSITIVE_Y: Framebuffer(),
-            GL_TEXTURE_CUBE_MAP_NEGATIVE_Z: Framebuffer(),
-            GL_TEXTURE_CUBE_MAP_POSITIVE_Z: Framebuffer()
-        }
+        self.fbo = Framebuffer()
 
         t = 0.0
-        self.views = {
-            GL_TEXTURE_CUBE_MAP_NEGATIVE_X: np.matmul(translationMatrix([0, 0, t]), rotationMatrixY(-np.pi/2.0)),
-            GL_TEXTURE_CUBE_MAP_POSITIVE_X: np.matmul(translationMatrix([0, 0, t]), rotationMatrixY(+np.pi/2.0)),
-            GL_TEXTURE_CUBE_MAP_NEGATIVE_Y: np.matmul(translationMatrix([0, 0, t]), rotationMatrixX(+np.pi/2.0)),
-            GL_TEXTURE_CUBE_MAP_POSITIVE_Y: np.matmul(translationMatrix([0, 0, t]), rotationMatrixX(-np.pi/2.0)),
-            GL_TEXTURE_CUBE_MAP_NEGATIVE_Z: np.matmul(translationMatrix([0, 0, t]), rotationMatrixY(-np.pi)),
-            GL_TEXTURE_CUBE_MAP_POSITIVE_Z: translationMatrix([0, 0, t]),
-        }
+        self.view = np.matmul(translationMatrix([0, 0, t]), rotationMatrixX(-np.pi/2.0))
 
         self.bind()
-        for (face, fbo) in self.fbos.items():
-            glTexImage2D(face, 0, self.format, width, height, 0, self.format, self.type, None)
-            fbo.prepare(self, face)
+
+        glTexImage2D(GL_TEXTURE_2D, 0, self.format, width, height, 0, self.format, self.type, None)
+
+        self.fbo.prepare(self, GL_TEXTURE_2D)
+
         self.unbind()
 
     def update(self, scene):
@@ -91,15 +80,15 @@ class EnvironmentMappingTexture(CubeMap):
 
         glViewport(0, 0, self.width, self.height)
 
-        for (face, fbo) in self.fbos.items():
-            fbo.bind()
-            #scene.camera.V = np.identity(4)
-            scene.camera.V = self.views[face]
+        self.fbo.bind()
+        
+        scene.camera.V = self.view
 
-            scene.draw_reflections()
+        scene.draw_reflections()
 
-            scene.camera.update()
-            fbo.unbind()
+        scene.camera.update()
+
+        self.fbo.unbind()
 
         # reset the viewport
         glViewport(0, 0, scene.window_size[0], scene.window_size[1])

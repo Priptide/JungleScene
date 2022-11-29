@@ -11,7 +11,7 @@ class SkyBoxShader(BaseShaderProgram):
         BaseShaderProgram.__init__(self, name=name)
         self.add_uniform('sampler_cube')
 
-    def bind(self, model, M):
+    def bind(self, model, M, plane=np.array([0, -1, 0, 10000], 'f')):
         BaseShaderProgram.bind(self, model, M)
         P = model.scene.P  # get projection matrix from the scene
         V = model.scene.camera.V  # get view matrix from the camera
@@ -26,10 +26,10 @@ class SkyBoxShader(BaseShaderProgram):
 class SkyBox(DrawModelFromMesh):
     def __init__(self, scene):
         DrawModelFromMesh.__init__(self, scene=scene, M=poseMatrix(scale=1000.0),
-                                   mesh=CubeMesh(texture=CubeMap(name='skybox/clouds'), inside=True),
+                                   mesh=CubeMesh(texture=CubeMap(name='skybox/nightsky'), inside=True),
                                    shader=SkyBoxShader(), name='skybox')
 
-    def draw(self):
+    def draw(self, plane=np.array([0, -1, 0, 10000], 'f')):
         glDepthMask(GL_FALSE)
         DrawModelFromMesh.draw(self)
         glDepthMask(GL_TRUE)

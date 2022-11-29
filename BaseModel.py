@@ -143,7 +143,7 @@ class BaseModel:
         glBindVertexArray(0)
         glBindBuffer(GL_ARRAY_BUFFER, 0)
 
-    def draw(self, Mp=poseMatrix()):
+    def draw(self, Mp=poseMatrix(), plane=np.array([0, -1, 0, 10000], 'f')):
         '''
         Draws the model using OpenGL functions.
         :param Mp: The model matrix of the parent object, for composite objects.
@@ -161,8 +161,9 @@ class BaseModel:
             # setup the shader program and provide it the Model, View and Projection matrices to use
             # for rendering this model
             self.shader.bind(
-                model=self,
-                M=np.matmul(Mp, self.M)
+                    model=self,
+                    M=np.matmul(Mp, self.M),
+                    plane=plane
             )
 
             #print('---> object {} rendered using shader {}'.format(self.name, self.shader.name))

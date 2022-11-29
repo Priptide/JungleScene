@@ -17,13 +17,16 @@ uniform mat4 PVM; 	// the Perspective-View-Model matrix is received as a Uniform
 uniform mat4 VM; 	// the View-Model matrix is received as a Uniform
 uniform mat3 VMiT;  // The inverse-transpose of the view model matrix, used for normals
 uniform int mode;	// the rendering mode (better to code different shaders!)
-
+uniform vec4 plane;
 
 void main() {
     // 1. first, we transform the position using PVM matrix.
     // note that gl_Position is a standard output of the
     // vertex shader.
+
     gl_Position = PVM * vec4(position, 1.0f);
+    
+    gl_ClipDistance[0] = dot(vec4(position, 1.0f), plane);
 
     // 2. calculate vectors used for shading calculations
     // those will be interpolate before being sent to the

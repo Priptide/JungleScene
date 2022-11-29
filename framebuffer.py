@@ -24,7 +24,7 @@ class Framebuffer:
     def unbind(self):
         glBindFramebuffer(GL_FRAMEBUFFER, 0)
 
-    def prepare(self, texture, target=None, level=0):
+    def prepare(self, texture, level=0):
         '''
         Prepare the Framebuffer by linking its output to a texture
         :param texture: The texture object to render to
@@ -32,11 +32,9 @@ class Framebuffer:
         :param level: The mipmap level (ignore)
         :return:
         '''
-        if target is None:
-            target = texture.target
 
         self.bind()
-        glFramebufferTexture2D(GL_FRAMEBUFFER, self.attachment, target, texture.textureid, level)
+        glFramebufferTexture(GL_FRAMEBUFFER, self.attachment, texture.textureid, 0)
         if self.attachment == GL_DEPTH_ATTACHMENT:
             glDrawBuffer(GL_NONE)
             glReadBuffer(GL_NONE)

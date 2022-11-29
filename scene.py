@@ -49,8 +49,8 @@ class Scene:
         # enable the vertex array capability
         glEnableClientState(GL_VERTEX_ARRAY)
 
-        # glEnable( GL_BLEND )
-        # glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA )
+        glEnable( GL_BLEND )
+        glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA )
 
         # enable depth test for clean output (see lecture on clipping & visibility for an explanation
         glEnable(GL_DEPTH_TEST)
@@ -143,36 +143,60 @@ class Scene:
                 glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
                 self.wireframe = True
 
-        elif event.key == pygame.K_7:
-            glDisable(GL_CULL_FACE)
+        # elif event.key == pygame.K_7:
+        #     glDisable(GL_CULL_FACE)
 
-        elif event.key == pygame.K_8:
-            glEnable(GL_CULL_FACE)
-            glCullFace(GL_BACK)
+        # elif event.key == pygame.K_8:
+        #     glEnable(GL_CULL_FACE)
+        #     glCullFace(GL_BACK)
 
-        elif event.key == pygame.K_9:
-            glEnable(GL_CULL_FACE)
-            glCullFace(GL_FRONT)
+        # elif event.key == pygame.K_9:
+        #     glEnable(GL_CULL_FACE)
+        #     glCullFace(GL_FRONT)
 
         # rendering mode, for now mediated by a uniform flag,
         # in the future we probably want to associate different shaders to change the mode.
         elif event.key == pygame.K_1:
-            print('--> mode 1 display: vertex colour set using the model color array.')
-            self.shaders.set_mode(1)
-
+            self.light.Ia[0] += .05
         elif event.key == pygame.K_2:
-            print('--> mode 2 display: vertex colour set from the position.')
-            self.shaders.set_mode(2)
-
+           self.light.Ia[0] -= .05
         elif event.key == pygame.K_3:
-            print('--> mode 3 display: vertex colour set from the normal.')
-            self.shaders.set_mode(3)
-
+            self.light.Ia[1] += .05
         elif event.key == pygame.K_4:
-            print('--> mode 0 display (default: vertex colour set to black.')
-            self.shaders.set_mode(0)
-
-
+            self.light.Ia[1] -= .05
+        elif event.key == pygame.K_5:
+            self.light.Ia[2] += .05
+        elif event.key == pygame.K_6:
+            self.light.Ia[2] -= .05
+        elif event.key == pygame.K_r:
+            self.light.Id[0] += .05
+        elif event.key == pygame.K_t:
+           self.light.Id[0] -= .05
+        elif event.key == pygame.K_y:
+            self.light.Id[1] += .05
+        elif event.key == pygame.K_u:
+            self.light.Id[1] -= .05
+        elif event.key == pygame.K_i:
+            self.light.Id[2] += .05
+        elif event.key == pygame.K_o:
+            self.light.Id[2] -= .05
+        elif event.key == pygame.K_f:
+            self.light.Is[0] += .05
+        elif event.key == pygame.K_g:
+           self.light.Is[0] -= .05
+        elif event.key == pygame.K_h:
+            self.light.Is[1] += .05
+        elif event.key == pygame.K_j:
+            self.light.Is[1] -= .05
+        elif event.key == pygame.K_k:
+            self.light.Is[2] += .05
+        elif event.key == pygame.K_l:
+            self.light.Is[2] -= .05
+        elif event.key == pygame.K_v:
+            print(self.light.Ia)
+            print(self.light.Id)
+            print(self.light.Is)
+        
     def pygameEvents(self):
         # check whether the window has been closed
         for event in pygame.event.get():
