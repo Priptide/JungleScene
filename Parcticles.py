@@ -10,7 +10,7 @@ from matutils import *
 from perlin_noise import PerlinNoise
 
 from mesh import Mesh
-from shaders import ParticleShader
+from shaders import ParticleShader, PhongShader
 from sphereModel import Sphere
 from texture import Texture
 
@@ -25,7 +25,7 @@ class Particle(DrawModelFromMesh):
 		self.time = time.time()
 		DrawModelFromMesh.__init__(self, scene=scene, M=poseMatrix(position=self.position, orientation=45), mesh=Sphere(nvert=7, nhoriz=7), shader=ParticleShader())
 
-	def update(self):
+	def update(self, plane):
 		diff = time.time() - self.time
 		self.time = time.time()
 		self.position = self.position + (self.velocity * diff)
@@ -34,7 +34,7 @@ class Particle(DrawModelFromMesh):
 		self.M = np.matmul(pos, rotation)
 		self.lifetime += diff
 		if(self.lifetime < self.longevity):
-			self.draw()
+			self.draw(plane=plane)
 			return True
 		return False
 		
@@ -106,13 +106,16 @@ class ParticleRenderer():
 		for i in range(count):
 			longevity = random()
 			spawn = np.array([origin[0]+randint(min_x, max_x), origin[1] ,origin[2]+randint(min_z, max_z)])
-			self.particles.append(Particle(scene=scene, position=spawn, velocity=np.array([0,6,0]), longevity=longevity*8))
+			particle = Particle(scene=scene, position=spawn, velocity=np.array([0,6,0]), longevity=longevity*8)
+			self.particles.append(particle)
 	
-	def update(self, scene):
+	def update(self, scene, plane=np.array([0, -1, 0, 10000], 'f')):
 		for particle in self.particles:
-			if(not particle.update()):
+			if(not particle.update(plane=plane)):
 				print("Deletion")
 				self.particles.remove(particle)
 				longevity = random()
 				spawn = np.array([self.origin[0]+randint(self.min_x, self.max_x), self.origin[1] ,self.origin[2]+randint(self.min_z, self.max_z)])
-				self.particles.append(Particle(scene=scene, position=spawn, velocity=np.array([0,6,0]), longevity=longevity*8))
+				new_particle = Particle(scene=scene, position=spawn, velocity=np.array([0,6,0]), longevity=longevity*8)
+				new_particle.update(plane=plane)
+				self.particles.append(new_particle)

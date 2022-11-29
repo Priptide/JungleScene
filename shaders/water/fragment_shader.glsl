@@ -1,64 +1,32 @@
 # version 130 // required to use OpenGL core standard
 
-//=== 'in' attributes are passed on from the vertex shader's 'out' attributes, and interpolated for each fragment
-in vec3 fragment_color;        // the fragment colour
-in vec3 position_view_space;   // the position in view coordinates of this fragment
-in vec2 fragment_texCoord;
-
-//=== 'out' attributes are the output image, usually only one for the colour of each pixel
+in vec3 normal_view_space;
+in vec4 clip_space;
+in vec3 fragment_texCoord;
 out vec4 final_color;
 
-// === uniform here the texture object to sample from
-uniform int mode;	// the rendering mode (better to code different shaders!)
-
-uniform int has_texture;
-
 // texture samplers
-uniform sampler2D textureObject; // first texture object
+uniform sampler2D textureObject;
+uniform sampler2D secondaryTexture;
 
-// material uniforms
-uniform vec3 Ka;
-uniform vec3 Kd;
-uniform vec3 Ks;
-uniform float Ns;
-
-// light source
-uniform vec3 light;
-uniform vec3 Ia;
-uniform vec3 Id;
-uniform vec3 Is;
-
-///=== main shader code
+uniform mat4 PVM; 	// the Perspective-View-Model matrix is received as a Uniform
+uniform mat4 VM; 	// the View-Model matrix is received as a Uniform
+uniform mat3 VMiT;  // The inverse-transpose of the view model matrix, used for normals
+uniform mat3 VT;
 void main() {
-      // 1. calculate vectors used for shading calculations
-      vec3 camera_direction = -normalize(position_view_space);
-      vec3 light_direction = normalize(light-position_view_space);
 
-      // 2. Calculate the normal to the fragment using position of its neighbours
-      vec3 xTangent = dFdx( position_view_space );
-      vec3 yTangent = dFdy( position_view_space );
-      vec3 normal_view_space = normalize( cross( xTangent, yTangent ) );
+    
+	vec2 ndsp = ((clip_space.xy / clip_space.w) / 2) + 0.5;
 
-      // 3. now we calculate light components
-      vec4 ambient = vec4(Ia*Ka,0.5f);
-      vec4 diffuse = vec4(Id*Kd*max(0.0f,dot(light_direction, normal_view_space)),0.5f);
-      vec4 specular = vec4(Is*Ks*pow(max(0.0f, dot(reflect(light_direction, normal_view_space), -camera_direction)), Ns), 0.5f);
+    vec2 reflect_cords = vec2(ndsp.x, 1.0-ndsp.y);
 
-      // 4. we calculate the attenuation function
-      // in this formula, dist should be the distance between the surface and the light
-      float dist = length(light - position_view_space);
-      float attenuation =  min(1.0/(dist*dist*0.005) + 1.0/(dist*0.05), 1.0);
+    vec2 refract_cords = vec2(ndsp.x, ndsp.y);
 
-      // 5. sample from the first texture
+    vec4 reflectColour = texture(textureObject, reflect_cords);
 
-      vec4 texval = vec4(1.0f);
-      if(has_texture == 1){
-          texval = texture2D(textureObject, fragment_texCoord);
-      }
+    vec4 refractColour = texture(secondaryTexture, refract_cords);
 
-      // 5. Finally, we combine the shading components
-      // we do not apply the texture to the specular component.
-      final_color = texval*ambient + attenuation*(texval*diffuse + specular);
+    final_color = mix(reflectColour, refractColour, 0.5);
 }
 
 

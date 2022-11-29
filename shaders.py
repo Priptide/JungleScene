@@ -147,6 +147,8 @@ class BaseShaderProgram:
         # in order to simplify extension of the class in the future, we start storing uniforms in a dictionary.
         self.uniforms = {
             'PVM': Uniform('PVM'),  # project view model matrix
+            'plane': Uniform('plane', np.array([0, -1, 0, 10000], 'f')),
+
         }
 
 
@@ -189,7 +191,7 @@ class BaseShaderProgram:
             glBindAttribLocation(self.program, location, name)
             print('Binding attribute {} to location {}'.format(name, location))
 
-    def bind(self, model, M):
+    def bind(self, model, M, plane=np.array([0, -1, 0, 10000], 'f')):
         '''
         Call this function to enable this GLSL Program (you can have multiple GLSL programs used during rendering!)
         '''
@@ -202,6 +204,8 @@ class BaseShaderProgram:
 
         # set the PVM matrix uniform
         self.uniforms['PVM'].bind(np.matmul(P, np.matmul(V, M)))
+
+        self.uniforms['plane'].bind_vector(plane)
 
 
 class PhongShader(BaseShaderProgram):
@@ -235,6 +239,7 @@ class PhongShader(BaseShaderProgram):
             'Is': Uniform('Is'),
             'has_texture': Uniform('has_texture'),
             'textureObject': Uniform('textureObject'),
+            'secondaryTexture': Uniform('secondaryTexture'),
             'plane': Uniform('plane', np.array([0, -1, 0, 10000], 'f')),
         }
 
@@ -265,8 +270,12 @@ class PhongShader(BaseShaderProgram):
 
         self.uniforms['plane'].bind_vector(plane)
 
-        if len(model.mesh.textures) > 0:
+        if len(model.mesh.textures) == 1:
             # bind the texture(s)
+            self.uniforms['textureObject'].bind(0)
+            self.uniforms['has_texture'].bind(1)
+        elif len(model.mesh.textures) > 1:
+            self.uniforms['secondaryTexture'].bind(1)
             self.uniforms['textureObject'].bind(0)
             self.uniforms['has_texture'].bind(1)
         else:

@@ -158,7 +158,7 @@ class ShadowMap(Texture):
         #self.P = scene.P
         if self.light is not None:
             self.P = frustumMatrix(-1.0, +1.0, -1.0, +1.0, 1.0, 20.0)
-            self.V = lookAt(np.array(self.light.position), np.array(scene.camera.center))
+            self.V = lookAt(np.array(self.light.position), np.array(target))
             scene.camera.V = self.V
 
             # update the viewport for the image size
@@ -167,7 +167,7 @@ class ShadowMap(Texture):
             self.fbo.bind()
             scene.draw_shadow_map()
             self.fbo.unbind()
-
+            
             # reset the viewport to the windows size
             glViewport(0, 0, scene.window_size[0], scene.window_size[1])
 

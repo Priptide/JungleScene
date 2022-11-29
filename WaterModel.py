@@ -14,7 +14,7 @@ class Water(Mesh):
     '''
     A model for drawing base terrain.
     '''
-    def __init__(self, width, height, material=Material(Ka=[0.5,0.5,0.5], Kd=[0.6,0.6,0.9], Ks=[1.,1.,0.9], Ns=15.0)):
+    def __init__(self, width, height, material=Material(Ka=[0.5,0.5,0.5], Kd=[0.6,0.6,0.9], Ks=[1.,1.,0.9], Ns=15.0), textures=None):
         n = width*height
         vertices = np.zeros((n, 3), 'f')
         vertex_colors = np.zeros((n, 3), 'f')
@@ -64,7 +64,8 @@ class Water(Mesh):
                       textureCoords=textureCoords,
                       material=material
                       )
-        
-        self.textures.append(Texture('Water.jpg'))
-
+        if textures is None or len(textures) == 0:
+            self.textures.append(Texture('Water.jpg'))
+        else:
+            self.textures = textures
                       
